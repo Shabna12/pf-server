@@ -10,7 +10,7 @@ const jwtMiddleware = (req,res,next) => {
         //verify if token is der
         const jwtResponse = jwt.verify(token,process.env.JWT_PASSWORD) 
         console.log(jwtResponse);
-        req.payload = jwtResponse.userId   //req object il payload il
+        req.payload = jwtResponse.userId   
         next()
         } catch (err) {
             res.status(401).json("Invalid Token.. Please Login !!")

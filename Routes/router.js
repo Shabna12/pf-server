@@ -16,22 +16,22 @@ router.post('/login',userController.loginController)
 router.post('/project/add',jwtMiddleware,multerMiddleware.single('projectImg'),projectController.addProjectController)  //bcoz req rsolve aakunnathinumunne so middleware 
 
 //home project - get
-router.get('/project/get-home-projects',projectController.getHomeProjects)
+router.get('/get-home-projects',projectController.getHomeProjects)
 
 //allprojects - get
 router.get('/all-projects',jwtMiddleware,projectController.allProjectsController)
 
-
-
 //user Projects - get
 router.get('/user-projects',jwtMiddleware,projectController.getuserProjectsController)
 
+//edit/ project
+router.put('/project/:pid/edit',jwtMiddleware,multerMiddleware.single('projectImg'),projectController.editProjectController)
+
+//remove project
+router.delete('/project/:pid/remove',jwtMiddleware,projectController.removeProjectController)
 
 
-
-
-
-
-
+//edit user
+router.put('/user/edit',jwtMiddleware,multerMiddleware.single('profilePic'),userController.editProfileController)
 
 module.exports = router
